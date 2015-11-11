@@ -11,8 +11,6 @@
 #define userTextField_x (200*kAdaptPixel)
 
 @interface LoginView ()<UITextFieldDelegate>
-@property (nonatomic, strong) UITextField *userTextField;
-@property (nonatomic, strong) UITextField *passTextField;
 @property (nonatomic, strong) UIButton *loginBtn;
 @property (nonatomic, strong) UIButton *registBtn;
 @property (nonatomic, strong) UIImageView *bgImageView;

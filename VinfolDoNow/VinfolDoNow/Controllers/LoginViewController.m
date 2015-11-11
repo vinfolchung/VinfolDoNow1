@@ -10,8 +10,9 @@
 #import "LoginView.h"
 #import "RegistViewController.h"
 #import "GestureManager.h"
-#import "FMDB.h"
 #import "HomeViewController.h"
+#import "UserInfoModel.h"
+#import "DBBusinessManager.h"
 
 @interface LoginViewController ()<LoginViewDelegate,RegistViewControllerDelegate>
 @property (nonatomic, strong) LoginView *loginView;
@@ -41,28 +42,48 @@
     [self presentViewController:self.registViewController animated:YES completion:^{}];
 }
 
+//登录按钮点击事件
 - (void)presentHomeView
 {
-    [self presentViewController:self.homeViewController animated:YES completion:nil];
+    //判断userInfo表中是否有对应的账号密码
+    NSArray *userArr = [[DBBusinessManager sharedDBBusinessManager] getDataFromUserInfo];
+    NSString *userText = self.loginView.userTextField.text;
+    NSString *password = self.loginView.passTextField.text;
+    for (NSInteger i = 0; i < [userArr count]; i++) {
+        UserInfoModel *userModel = userArr[i];
+        if ([userText isEqualToString:userModel.phone]) {
+            if ([password isEqualToString:userModel.password]) {
+                [self presentViewController:self.homeViewController animated:YES completion:nil];
+            }
+            else {
+                [self addLabelWithTitle:@"密码错误！"];
+            }
+        }
+    }
 }
 
 #pragma mark - RegistViewControllerDelegate
 - (void)registerSuccess
 {
+    [self addLabelWithTitle:@"注册成功！"];
+}
+
+#pragma mark - private methods
+- (void)addLabelWithTitle:(NSString *)title
+{
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 400*kAdaptPixel, 300*kAdaptPixel, 50*kAdaptPixel)];
     label.centerX = kScreen_Width/2;
-    label.text = @"注册成功!";
+    label.text = title;
     label.textColor = [UIColor redColor];
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:20.0*kAdaptPixel];
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:3.0 animations:^{
         [label setAlpha:1.0f];
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:3.0 animations:^{
+        [UIView animateWithDuration:5.0 animations:^{
             [label setAlpha:0];
         } completion:nil];
     }];
-
     [self.view addSubview:label];
 }
 

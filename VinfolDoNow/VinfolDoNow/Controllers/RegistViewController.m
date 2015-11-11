@@ -11,6 +11,9 @@
 #import "GestureManager.h"
 #import "AppDelegate.h"
 #import "DBBusinessManager.h"
+#import <Photos/PHPhotoLibrary.h>
+#import <Photos/PHAsset.h>
+#import <AssetsLibrary/ALAsset.h>
 
 @interface RegistViewController ()<RegistViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -18,6 +21,7 @@
 @property (nonatomic, strong) UIBarButtonItem *leftBarButton;
 @property (nonatomic, strong) UIBarButtonItem *rightBarButton;
 @property (nonatomic, strong) UILabel *alertLabel;//密码不正确提示
+@property (nonatomic, strong) NSString *filePath;//头像图片路径
 
 @end
 
@@ -59,8 +63,16 @@
     del.headImage = image;
     [picker dismissViewControllerAnimated:YES completion:^{}];
     [self.registView.headImageBtn setBackgroundImage:image forState:UIControlStateNormal];
-    //获取点选图片时，获取图片名称
-    //NSURL *imageUrl = [info objectForKey:UIImagePickerControllerReferenceURL];
+    //把图片转为data
+    NSData *data = UIImagePNGRepresentation(image);
+    //图片保存的路径
+    //这里将图片放在沙盒的documents文件夹中
+    NSString *documentPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    //文件管理器
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager createDirectoryAtPath:documentPath withIntermediateDirectories:YES attributes:nil error:nil];
+    [fileManager createFileAtPath:[documentPath stringByAppendingString:@"/image.png"] contents:data attributes:nil];
+    self.filePath = [[NSString alloc] initWithFormat:@"%@%@",documentPath,@"/image.png"];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

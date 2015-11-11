@@ -13,8 +13,6 @@
 
 @interface DBManager ()
 
-@property (nonatomic, strong) FMDatabase *dataBase;
-
 @end
 
 @implementation DBManager
@@ -38,7 +36,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DBManager)
     va_start(args, sql);
     [self.dataBase open];
     BOOL result = [self.dataBase executeUpdate:sql,args];
-    [self.dataBase close];
     return result;
 }
 
@@ -48,7 +45,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DBManager)
     va_start(args, sql);
     [self.dataBase open];
     FMResultSet *fmResultSet = [self.dataBase executeQuery:sql,args];
-    [self.dataBase close];
     return fmResultSet;
 }
 

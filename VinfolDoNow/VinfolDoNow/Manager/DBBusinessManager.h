@@ -21,4 +21,7 @@ SYNTHESIZE_SINGLETON_FOR_HEADER(DBBusinessManager)
                            email:(NSString *)email
                            birth:(NSString *)birth;
 
+- (NSMutableArray *)getDataFromUserInfo;
+- (NSString *)getPasswordFromUserInfoWithPhone:(NSString *)phone;
+
 @end

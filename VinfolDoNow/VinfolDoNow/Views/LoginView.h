@@ -10,6 +10,8 @@
 
 @protocol LoginViewDelegate;
 @interface LoginView : UIView
+@property (nonatomic, strong) UITextField *userTextField;
+@property (nonatomic, strong) UITextField *passTextField;
 
 @property (nonatomic, weak) id<LoginViewDelegate> delegate;
 
