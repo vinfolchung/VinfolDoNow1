@@ -98,13 +98,16 @@
 {
     NSString *str1 = self.registView.firstPassTextField.text;
     NSString *str2 = self.registView.secondPassTextField.text;
-    NSString *phoneText = self.registView.phoneTextField.text;
+    NSString *phone = self.registView.phoneTextField.text;
+    NSString *name = self.registView.nameTextField.text;
+    NSString *email = self.registView.emailTextField.text;
+    NSString *birth = self.registView.birthTextField.text;
     
-    if ([phoneText isEqualToString:@""] || [str1 isEqualToString:@""] || [str2 isEqualToString:@""]) {
+    if ([phone isEqualToString:@""] || [str1 isEqualToString:@""] || [str2 isEqualToString:@""]) {
         [UIView animateWithDuration:0.3 animations:^{
             [self.alertLabel setAlpha:1.0f];
         } completion:^(BOOL finished) {
-            [UIView animateWithDuration:5.0 animations:^{
+            [UIView animateWithDuration:4.0 animations:^{
                 [self.alertLabel setAlpha:0];
             } completion:nil];
         }];
@@ -115,17 +118,17 @@
             if ([self.delegate respondsToSelector:@selector(registerSuccess)]) {
                 [self.delegate registerSuccess];
             }
-            [[DBBusinessManager sharedDBBusinessManager] userInfoInsertWithPhone:phoneText password:str1];
+            [[DBBusinessManager sharedDBBusinessManager] userInfoInsertWithPhone:phone password:str1];
+            [[DBBusinessManager sharedDBBusinessManager] basicInfoInsertWithPhone:phone name:name email:email birth:birth];
         }else {
             [UIView animateWithDuration:0.3 animations:^{
                 [self.alertLabel setAlpha:1.0f];
             } completion:^(BOOL finished) {
-                [UIView animateWithDuration:5.0 animations:^{
+                [UIView animateWithDuration:4.0 animations:^{
                     [self.alertLabel setAlpha:0];
                 } completion:nil];
             }];
         }
-
     }
 }
 

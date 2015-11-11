@@ -12,12 +12,8 @@
 
 @interface RegistView ()<UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 
-@property (nonatomic, strong) UITextField *nameTextField;
-@property (nonatomic, strong) UITextField *emailTextField;
-@property (nonatomic, strong) UITextField *birthTextField;
 @property (nonatomic, strong) UIPickerView *birthPickerView;
 @property (nonatomic, strong) UIButton *selectedBtn;
-@property (nonatomic, strong) UIButton *registerBtn;
 @property (nonatomic, strong) NSMutableArray *yearArr;
 @property (nonatomic, strong) NSMutableArray *monthArr;
 @property (nonatomic, strong) NSMutableArray *dayArr;
@@ -40,7 +36,6 @@
         [self addTextField];
         [self addSubview:self.selectedBtn];
         [self addSubview:self.birthPickerView];
-        //[self addSubview:self.registerBtn];
     }
     return self;
 }
@@ -166,7 +161,6 @@
     [self.nameTextField becomeFirstResponder];
     [self.birthPickerView setAlpha:0];
     [self.selectedBtn setAlpha:0];
-    NSLog(@"%@",self.birthStr);
 }
 
 #pragma mark - private methods
@@ -256,23 +250,6 @@
         [_headImageBtn addTarget:self action:@selector(headBtnOnClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _headImageBtn;
-}
-
-- (UIButton *)registerBtn
-{
-    if (!_registerBtn) {
-        _registerBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 400*kAdaptPixel, 150*kAdaptPixel, 50*kAdaptPixel)];
-        _registerBtn.backgroundColor = [UIColor whiteColor];
-        [_registerBtn setTitle:@"注册" forState:UIControlStateNormal];
-        [_registerBtn setTitleColor:[UIColor cyanColor] forState:UIControlStateNormal];
-        _registerBtn.centerX = kScreen_Width/2;
-        _registerBtn.layer.cornerRadius = 10.0f;
-        _registerBtn.alpha = 0.4f;
-        _registerBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-        _registerBtn.titleLabel.font = [UIFont systemFontOfSize:20.0*kAdaptPixel];
-        [_registerBtn addTarget:self action:@selector(registerBtnOnClicked:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _registerBtn;
 }
 
 - (UIPickerView *)birthPickerView

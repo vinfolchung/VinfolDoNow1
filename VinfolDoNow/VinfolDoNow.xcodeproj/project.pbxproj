@@ -39,6 +39,8 @@
 		41C1F3751BF1B483003BED87 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C1F3741BF1B483003BED87 /* DBManager.m */; };
 		41C1F3781BF24B89003BED87 /* DBBusinessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C1F3771BF24B89003BED87 /* DBBusinessManager.m */; };
 		41C1F37B1BF250FC003BED87 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C1F37A1BF250FC003BED87 /* UserInfoModel.m */; };
+		41DEB7E61BF2F329000F4D56 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41DEB7E51BF2F329000F4D56 /* HomeViewController.m */; };
+		41DEB7E91BF2F957000F4D56 /* BasicInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41DEB7E81BF2F957000F4D56 /* BasicInfoModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,10 @@
 		41C1F3771BF24B89003BED87 /* DBBusinessManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBBusinessManager.m; sourceTree = "<group>"; };
 		41C1F3791BF250FC003BED87 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
 		41C1F37A1BF250FC003BED87 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
+		41DEB7E41BF2F329000F4D56 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		41DEB7E51BF2F329000F4D56 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		41DEB7E71BF2F957000F4D56 /* BasicInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicInfoModel.h; sourceTree = "<group>"; };
+		41DEB7E81BF2F957000F4D56 /* BasicInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInfoModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +227,8 @@
 			children = (
 				41C1F3791BF250FC003BED87 /* UserInfoModel.h */,
 				41C1F37A1BF250FC003BED87 /* UserInfoModel.m */,
+				41DEB7E71BF2F957000F4D56 /* BasicInfoModel.h */,
+				41DEB7E81BF2F957000F4D56 /* BasicInfoModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -247,6 +255,8 @@
 				41B4D26C1BF07FE500A0BD62 /* LoginViewController.m */,
 				41B4D28E1BF0C00200A0BD62 /* RegistViewController.h */,
 				41B4D28F1BF0C00200A0BD62 /* RegistViewController.m */,
+				41DEB7E41BF2F329000F4D56 /* HomeViewController.h */,
+				41DEB7E51BF2F329000F4D56 /* HomeViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -468,7 +478,9 @@
 				41B4D2701BF0804200A0BD62 /* TimerManager.m in Sources */,
 				41C1F3781BF24B89003BED87 /* DBBusinessManager.m in Sources */,
 				41B4D2691BF07CC200A0BD62 /* BaseViewController.m in Sources */,
+				41DEB7E91BF2F957000F4D56 /* BasicInfoModel.m in Sources */,
 				41C1F3751BF1B483003BED87 /* DBManager.m in Sources */,
+				41DEB7E61BF2F329000F4D56 /* HomeViewController.m in Sources */,
 				41B4D21A1BF0798700A0BD62 /* AppDelegate.m in Sources */,
 				41C1F37B1BF250FC003BED87 /* UserInfoModel.m in Sources */,
 				41B4D2661BF07BB800A0BD62 /* BaseView.m in Sources */,

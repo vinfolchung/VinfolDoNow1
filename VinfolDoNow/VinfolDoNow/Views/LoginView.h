@@ -18,5 +18,6 @@
 @protocol LoginViewDelegate <NSObject>
 @optional
 - (void)presentRegistView;
+- (void)presentHomeView;
 
 @end

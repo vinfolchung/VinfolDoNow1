@@ -59,6 +59,9 @@
 - (void)loginBtnOnClicked:(id)sender
 {
     [self.passTextField resignFirstResponder];
+    if ([self.delegate respondsToSelector:@selector(presentHomeView)]) {
+        [self.delegate presentHomeView];
+    }
 }
 
 #pragma mark - private methods

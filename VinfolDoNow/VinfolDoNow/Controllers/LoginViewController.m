@@ -11,10 +11,12 @@
 #import "RegistViewController.h"
 #import "GestureManager.h"
 #import "FMDB.h"
+#import "HomeViewController.h"
 
 @interface LoginViewController ()<LoginViewDelegate,RegistViewControllerDelegate>
 @property (nonatomic, strong) LoginView *loginView;
 @property (nonatomic, strong) RegistViewController *registViewController;
+@property (nonatomic, strong) HomeViewController *homeViewController;
 
 @end
 
@@ -37,6 +39,11 @@
 - (void)presentRegistView
 {
     [self presentViewController:self.registViewController animated:YES completion:^{}];
+}
+
+- (void)presentHomeView
+{
+    [self presentViewController:self.homeViewController animated:YES completion:nil];
 }
 
 #pragma mark - RegistViewControllerDelegate
@@ -75,6 +82,15 @@
         _registViewController = [[RegistViewController alloc] init];
     }
     return _registViewController;
+}
+
+- (HomeViewController *)homeViewController
+{
+    if (!_homeViewController) {
+        _homeViewController = [[HomeViewController alloc] init];
+        _homeViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    }
+    return _homeViewController;
 }
 
 @end

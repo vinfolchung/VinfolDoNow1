@@ -15,6 +15,9 @@
 @property (nonatomic, strong) UITextField *firstPassTextField;
 @property (nonatomic, strong) UITextField *secondPassTextField;
 @property (nonatomic, strong) UITextField *phoneTextField;
+@property (nonatomic, strong) UITextField *nameTextField;
+@property (nonatomic, strong) UITextField *emailTextField;
+@property (nonatomic, strong) UITextField *birthTextField;
 @property (nonatomic, weak) id<RegistViewDelegate> delegate;
 
 @end

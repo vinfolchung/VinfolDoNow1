@@ -16,4 +16,9 @@ SYNTHESIZE_SINGLETON_FOR_HEADER(DBBusinessManager)
 - (void)userInfoInsertWithPhone:(NSString *)phone
                        password:(NSString *)password;
 
+- (void)basicInfoInsertWithPhone:(NSString *)phone
+                            name:(NSString *)name
+                           email:(NSString *)email
+                           birth:(NSString *)birth;
+
 @end

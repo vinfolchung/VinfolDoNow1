@@ -17,9 +17,20 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DBBusinessManager)
 - (void)userInfoInsertWithPhone:(NSString *)phone
                        password:(NSString *)password
 {
-    NSString *sql = [NSString stringWithFormat:@"INSERT INTO USER_INFO (PHONE,PASSWORD) VALUES ('%@', '%@')",phone,password];
+    NSString *sql = [NSString stringWithFormat:@"INSERT INTO USER_INFO (PHONE, PASSWORD) VALUES ('%@', '%@')",phone,password];
     if ([[DBManager sharedDBManager] dataBaseInsertWithSql:sql]) {
         NSLog(@"插入userinfo表成功！");
+    }
+}
+
+- (void)basicInfoInsertWithPhone:(NSString *)phone
+                            name:(NSString *)name
+                           email:(NSString *)email
+                           birth:(NSString *)birth
+{
+    NSString *sql = [NSString stringWithFormat:@"INSERT INTO BASIC_INFO (PHONE, NAME, EMAIL, BIRTH) VALUES ('%@', '%@', '%@', '%@')",phone,name,email,birth];
+    if ([[DBManager sharedDBManager] dataBaseInsertWithSql:sql]) {
+        NSLog(@"插入basicinfo表成功！");
     }
 }
 
@@ -35,6 +46,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DBBusinessManager)
         [userArr addObject:[UserInfoModel makeModelWithPhone:phone password:password]];
     }
     return userArr;
+}
+
+- (NSMutableArray *)getDataFromBasicInfo
+{
+    NSMutableArray *basicArr = [[NSMutableArray alloc] init];
+    return basicArr;
 }
 
 @end
