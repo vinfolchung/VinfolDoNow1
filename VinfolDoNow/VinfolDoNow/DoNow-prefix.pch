@@ -1,0 +1,22 @@
+//
+//  DoNow-prefix.pch
+//  VinfolDoNow
+//
+//  Created by 钟文锋 on 15/11/9.
+//  Copyright © 2015年 vinfol. All rights reserved.
+//
+
+#ifndef DoNow_prefix_pch
+#define DoNow_prefix_pch
+#import "UIView+PlaceSize.h"
+
+//屏幕适配,以iPhone6为基准
+#define kAdaptPixel (kScreen_Width / 375.0f)
+
+// 屏幕的宽、高
+#define kScreen_Height [UIScreen mainScreen].bounds.size.height
+#define kScreen_Width [UIScreen mainScreen].bounds.size.width
+
+
+
+#endif
