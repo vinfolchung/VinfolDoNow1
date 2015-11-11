@@ -49,16 +49,21 @@
     NSArray *userArr = [[DBBusinessManager sharedDBBusinessManager] getDataFromUserInfo];
     NSString *userText = self.loginView.userTextField.text;
     NSString *password = self.loginView.passTextField.text;
+    NSInteger index = 0;
     for (NSInteger i = 0; i < [userArr count]; i++) {
         UserInfoModel *userModel = userArr[i];
         if ([userText isEqualToString:userModel.phone]) {
+            index++;
             if ([password isEqualToString:userModel.password]) {
                 [self presentViewController:self.homeViewController animated:YES completion:nil];
             }
             else {
-                [self addLabelWithTitle:@"密码错误！"];
+                [self addLabelWithTitle:@"请重新输入密码！"];
             }
         }
+    }
+    if (index == 0) {
+        [self addLabelWithTitle:@"请重新输入账号！"];
     }
 }
 
