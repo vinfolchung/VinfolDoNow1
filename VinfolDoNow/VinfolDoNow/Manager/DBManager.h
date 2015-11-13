@@ -14,7 +14,7 @@
 SYNTHESIZE_SINGLETON_FOR_HEADER(DBManager)
 
 @property (nonatomic, strong) FMDatabase *dataBase;
-- (BOOL)dataBaseInsertWithSql:(NSString *)sql,...;
-- (FMResultSet *)dataBaseSelectWithSql:(NSString *)sql,...;
+- (BOOL)dataBaseUpdateWithSql:(NSString *)sql,...;
+- (FMResultSet *)dataBaseQueryWithSql:(NSString *)sql,...;
 
 @end

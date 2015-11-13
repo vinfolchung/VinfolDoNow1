@@ -14,7 +14,10 @@
 SYNTHESIZE_SINGLETON_FOR_HEADER(DBBusinessManager)
 
 - (void)userInfoInsertWithPhone:(NSString *)phone
-                       password:(NSString *)password;
+                       password:(NSString *)password
+                          login:(NSString *)login
+                      autoLogin:(NSString *)autoLogin
+                   rememberPass:(NSString *)rememberPass;
 
 - (void)basicInfoInsertWithPhone:(NSString *)phone
                             name:(NSString *)name
@@ -22,6 +25,16 @@ SYNTHESIZE_SINGLETON_FOR_HEADER(DBBusinessManager)
                            birth:(NSString *)birth;
 
 - (NSMutableArray *)getDataFromUserInfo;
-- (NSString *)getPasswordFromUserInfoWithPhone:(NSString *)phone;
+
+- (NSMutableArray *)getDataFromBasicInfo;
+
+- (void)updateLoginWithPhone:(NSString *)phone
+                       login:(NSString *)login;
+
+- (void)updateAutoLoginWithPhone:(NSString *)phone
+                       autoLogin:(NSString *)autoLogin;
+
+- (void)updateRememberPassWithPhone:(NSString *)phone
+                       rememberPass:(NSString *)rememberPass;
 
 @end

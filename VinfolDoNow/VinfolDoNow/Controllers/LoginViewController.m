@@ -36,6 +36,13 @@
     self.registViewController.delegate = self;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    [self isAutoLogin];
+    [self isRememberPassword];
+}
+
 #pragma mark - LoginViewDelegate
 - (void)presentRegistView
 {
@@ -49,13 +56,15 @@
     NSArray *userArr = [[DBBusinessManager sharedDBBusinessManager] getDataFromUserInfo];
     NSString *userText = self.loginView.userTextField.text;
     NSString *password = self.loginView.passTextField.text;
-    NSInteger index = 0;
+    NSInteger index = 0;//查找有没对应的账号 若没有变化则是没有对应的账号
     for (NSInteger i = 0; i < [userArr count]; i++) {
         UserInfoModel *userModel = userArr[i];
         if ([userText isEqualToString:userModel.phone]) {
             index++;
             if ([password isEqualToString:userModel.password]) {
                 [self presentViewController:self.homeViewController animated:YES completion:nil];
+                //记录账号的登录状态
+                [[DBBusinessManager sharedDBBusinessManager] updateLoginWithPhone:userText login:@"YES"];
             }
             else {
                 [self addLabelWithTitle:@"请重新输入密码！"];
@@ -64,6 +73,28 @@
     }
     if (index == 0) {
         [self addLabelWithTitle:@"请重新输入账号！"];
+    }
+}
+
+//记住密码
+- (void)rememberPassword
+{
+    if ([self.loginView.rememberBtn isSelected]) {
+        [[DBBusinessManager sharedDBBusinessManager] updateRememberPassWithPhone:self.loginView.userTextField.text rememberPass:@"YES"];
+    }
+    else {
+        [[DBBusinessManager sharedDBBusinessManager] updateRememberPassWithPhone:self.loginView.userTextField.text rememberPass:@"NO"];
+    }
+}
+
+//自动登录按钮
+- (void)autoLogin
+{
+    if ([self.loginView.autoLoginBtn isSelected]) {
+        [[DBBusinessManager sharedDBBusinessManager] updateAutoLoginWithPhone:self.loginView.userTextField.text autoLogin:@"YES"];
+    }
+    else {
+        [[DBBusinessManager sharedDBBusinessManager] updateAutoLoginWithPhone:self.loginView.userTextField.text autoLogin:@"NO"];
     }
 }
 
@@ -90,6 +121,39 @@
         } completion:nil];
     }];
     [self.view addSubview:label];
+}
+
+//记住密码
+- (void)isRememberPassword
+{
+    NSArray *userArr = [[DBBusinessManager sharedDBBusinessManager] getDataFromUserInfo];
+    for (NSInteger i = 0; i<userArr.count; i++) {
+        UserInfoModel *userModel = userArr[i];
+        if ([userModel.rememberPass isEqualToString:@"YES"]) {
+            [self.loginView.userTextField setText:userModel.phone];
+            [self.loginView.passTextField setText:userModel.password];
+            [self.loginView.rememberBtn setSelected:YES];
+            [self.loginView.rememberBtn setBackgroundColor:[UIColor greenColor]];
+            break;
+        }
+    }
+}
+
+//自动登录
+- (void)isAutoLogin
+{
+    NSArray *userArr = [[DBBusinessManager sharedDBBusinessManager] getDataFromUserInfo];
+    for (NSInteger i = 0; i<userArr.count; i++) {
+        UserInfoModel *userModel = userArr[i];
+        if ([userModel.login isEqualToString:@"YES"]) {
+            if ([userModel.autoLogin isEqualToString:@"YES"]) {
+                NSLog(@"%@,%@",userModel.login,userModel.autoLogin);
+                //直接跳过登录
+                [self presentViewController:self.homeViewController animated:YES completion:nil];
+                break;
+            }
+        }
+    }
 }
 
 #pragma mark - getter and setter

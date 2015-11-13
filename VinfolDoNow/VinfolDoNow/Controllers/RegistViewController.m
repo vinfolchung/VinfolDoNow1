@@ -130,7 +130,7 @@
             if ([self.delegate respondsToSelector:@selector(registerSuccess)]) {
                 [self.delegate registerSuccess];
             }
-            [[DBBusinessManager sharedDBBusinessManager] userInfoInsertWithPhone:phone password:str1];
+            [[DBBusinessManager sharedDBBusinessManager] userInfoInsertWithPhone:phone password:str1 login:@"NO" autoLogin:@"NO" rememberPass:@"NO"];
             [[DBBusinessManager sharedDBBusinessManager] basicInfoInsertWithPhone:phone name:name email:email birth:birth];
         }else {
             [UIView animateWithDuration:0.3 animations:^{

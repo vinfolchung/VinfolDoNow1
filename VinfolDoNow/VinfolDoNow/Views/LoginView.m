@@ -15,8 +15,6 @@
 @property (nonatomic, strong) UIButton *loginBtn;
 @property (nonatomic, strong) UIButton *registBtn;
 @property (nonatomic, strong) UIImageView *bgImageView;
-@property (nonatomic, strong) UIButton *rememberBtn;
-@property (nonatomic, strong) UIButton *autoLoginBtn;
 
 @end
 
@@ -74,6 +72,9 @@
         [self.rememberBtn setSelected:YES];
         [self.rememberBtn setBackgroundColor:[UIColor greenColor]];
     }
+    if ([self.delegate respondsToSelector:@selector(rememberPassword)]) {
+        [self.delegate rememberPassword];
+    }
 }
 
 - (void)autoLoginBtnOnClicked:(id)sender
@@ -88,11 +89,15 @@
         [self.autoLoginBtn setSelected:YES];
         [self.autoLoginBtn setBackgroundColor:[UIColor greenColor]];
     }
+    if ([self.delegate respondsToSelector:@selector(autoLogin)]) {
+        [self.delegate autoLogin];
+    }
 }
 
 - (void)loginBtnOnClicked:(id)sender
 {
     [self.passTextField resignFirstResponder];
+    [self.userTextField resignFirstResponder];
     if ([self.delegate respondsToSelector:@selector(presentHomeView)]) {
         [self.delegate presentHomeView];
     }

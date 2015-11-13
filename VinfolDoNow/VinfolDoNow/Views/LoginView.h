@@ -12,6 +12,8 @@
 @interface LoginView : UIView
 @property (nonatomic, strong) UITextField *userTextField;
 @property (nonatomic, strong) UITextField *passTextField;
+@property (nonatomic, strong) UIButton *rememberBtn;
+@property (nonatomic, strong) UIButton *autoLoginBtn;
 
 @property (nonatomic, weak) id<LoginViewDelegate> delegate;
 
@@ -19,7 +21,10 @@
 
 @protocol LoginViewDelegate <NSObject>
 @optional
-- (void)presentRegistView;
-- (void)presentHomeView;
+- (void)presentRegistView;//跳转到注册页面
+- (void)presentHomeView;//跳转到主页面
+
+- (void)rememberPassword;//记住密码
+- (void)autoLogin;//自动登录
 
 @end

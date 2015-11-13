@@ -12,10 +12,16 @@
 
 + (UserInfoModel *)makeModelWithPhone:(NSString *)phone
                              password:(NSString *)password
+                                login:(NSString *)login
+                            autoLogin:(NSString *)autoLogin
+                         rememberPass:(NSString *)rememberPass
 {
     UserInfoModel *model = [[UserInfoModel alloc] init];
     model.phone = phone;
     model.password = password;
+    model.login = login;
+    model.autoLogin = autoLogin;
+    model.rememberPass = rememberPass;
     return model;
 }
 
