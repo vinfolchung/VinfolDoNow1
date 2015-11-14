@@ -130,11 +130,13 @@
     for (NSInteger i = 0; i<userArr.count; i++) {
         UserInfoModel *userModel = userArr[i];
         if ([userModel.rememberPass isEqualToString:@"YES"]) {
-            [self.loginView.userTextField setText:userModel.phone];
-            [self.loginView.passTextField setText:userModel.password];
-            [self.loginView.rememberBtn setSelected:YES];
-            [self.loginView.rememberBtn setBackgroundColor:[UIColor greenColor]];
-            break;
+            if ([userModel.login isEqualToString:@"YES"]) {
+                [self.loginView.userTextField setText:userModel.phone];
+                [self.loginView.passTextField setText:userModel.password];
+                [self.loginView.rememberBtn setSelected:YES];
+                [self.loginView.rememberBtn setBackgroundColor:[UIColor greenColor]];
+                break;
+            }
         }
     }
 }
@@ -178,7 +180,7 @@
 {
     if (!_homeViewController) {
         _homeViewController = [[HomeViewController alloc] init];
-        _homeViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        _homeViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     }
     return _homeViewController;
 }

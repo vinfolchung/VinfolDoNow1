@@ -7,10 +7,16 @@
 //
 
 #import "HomeViewController.h"
+#import "HomeView.h"
+#import "SideSlideView.h"
+#import "MenuView.h"
 
 @interface HomeViewController ()
 
 @property (nonatomic, strong) UIBarButtonItem *leftBarBtn;
+@property (nonatomic, strong) HomeView *homeView;
+@property (nonatomic, strong) SideSlideView *sideSlideView;
+@property (nonatomic, strong) MenuView *menuView;
 
 @end
 
@@ -18,28 +24,33 @@
 #pragma mark - life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
-#pragma mark - override methods
-- (UIBarButtonItem *)getLeftBarButtonItem
-{
-    return self.leftBarBtn;
-}
-
-#pragma mark - event respond
-- (void)leftBarBtnOnClicked:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.sideSlideView setSideViewWithContentView:self.menuView];
+    [self.view addSubview:self.sideSlideView];
 }
 
 #pragma mark - getter and setter
-- (UIBarButtonItem *)leftBarBtn
+- (HomeView *)homeView
 {
-    if (!_leftBarBtn) {
-        _leftBarBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_back@2x.png"] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarBtnOnClicked:)];
-        _leftBarBtn.tintColor = [UIColor whiteColor];
+    if (!_homeView) {
+        _homeView = [[HomeView alloc] init];
     }
-    return _leftBarBtn;
+    return _homeView;
+}
+
+- (SideSlideView *)sideSlideView
+{
+    if (!_sideSlideView) {
+        _sideSlideView = [[SideSlideView alloc] initWithRootVC:self];
+    }
+    return _sideSlideView;
+}
+
+- (MenuView *)menuView
+{
+    if (!_menuView) {
+        _menuView = [[MenuView alloc] init];
+    }
+    return _menuView;
 }
 
 @end

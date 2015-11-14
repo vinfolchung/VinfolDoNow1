@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		411607C11BF6104900AD7F94 /* burger.png in Resources */ = {isa = PBXBuildFile; fileRef = 411607BF1BF6104900AD7F94 /* burger.png */; };
+		411607C21BF6104900AD7F94 /* burger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 411607C01BF6104900AD7F94 /* burger@2x.png */; };
+		411607C81BF635C500AD7F94 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 411607C71BF635C500AD7F94 /* MenuView.m */; };
+		411607CB1BF6476E00AD7F94 /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 411607CA1BF6476E00AD7F94 /* HomeView.m */; };
+		411607CE1BF71BD300AD7F94 /* SideSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 411607CD1BF71BD300AD7F94 /* SideSlideView.m */; };
+		411607D01BF7862A00AD7F94 /* menuBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 411607CF1BF7862A00AD7F94 /* menuBg.png */; };
 		41B4D2171BF0798700A0BD62 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B4D2161BF0798700A0BD62 /* main.m */; };
 		41B4D21A1BF0798700A0BD62 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B4D2191BF0798700A0BD62 /* AppDelegate.m */; };
 		41B4D2221BF0798700A0BD62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41B4D2211BF0798700A0BD62 /* Assets.xcassets */; };
@@ -61,6 +67,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		411607BF1BF6104900AD7F94 /* burger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burger.png; sourceTree = "<group>"; };
+		411607C01BF6104900AD7F94 /* burger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "burger@2x.png"; sourceTree = "<group>"; };
+		411607C61BF635C500AD7F94 /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
+		411607C71BF635C500AD7F94 /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
+		411607C91BF6476E00AD7F94 /* HomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeView.h; sourceTree = "<group>"; };
+		411607CA1BF6476E00AD7F94 /* HomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
+		411607CC1BF71BD300AD7F94 /* SideSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideSlideView.h; sourceTree = "<group>"; };
+		411607CD1BF71BD300AD7F94 /* SideSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideSlideView.m; sourceTree = "<group>"; };
+		411607CF1BF7862A00AD7F94 /* menuBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBg.png; sourceTree = "<group>"; };
 		41B4D2121BF0798700A0BD62 /* VinfolDoNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VinfolDoNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B4D2161BF0798700A0BD62 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		41B4D2181BF0798700A0BD62 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -242,6 +257,12 @@
 				41B4D2891BF08F7700A0BD62 /* LoginView.m */,
 				41B4D2911BF0C3D200A0BD62 /* RegistView.h */,
 				41B4D2921BF0C3D200A0BD62 /* RegistView.m */,
+				411607C91BF6476E00AD7F94 /* HomeView.h */,
+				411607CA1BF6476E00AD7F94 /* HomeView.m */,
+				411607CC1BF71BD300AD7F94 /* SideSlideView.h */,
+				411607CD1BF71BD300AD7F94 /* SideSlideView.m */,
+				411607C61BF635C500AD7F94 /* MenuView.h */,
+				411607C71BF635C500AD7F94 /* MenuView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -331,6 +352,9 @@
 				41B4D2961BF0D49A00A0BD62 /* nav_back@2x.png */,
 				41B4D29A1BF0E16700A0BD62 /* defaultHead.png */,
 				41C1F3711BF1B066003BED87 /* avatar.png */,
+				411607BF1BF6104900AD7F94 /* burger.png */,
+				411607C01BF6104900AD7F94 /* burger@2x.png */,
+				411607CF1BF7862A00AD7F94 /* menuBg.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -447,9 +471,12 @@
 				41B4D2221BF0798700A0BD62 /* Assets.xcassets in Resources */,
 				41B4D2A01BF0F97700A0BD62 /* add photo.png in Resources */,
 				41B4D2971BF0D49A00A0BD62 /* nav_back@2x.png in Resources */,
+				411607C11BF6104900AD7F94 /* burger.png in Resources */,
 				41B4D28D1BF0A15D00A0BD62 /* bg.png in Resources */,
+				411607C21BF6104900AD7F94 /* burger@2x.png in Resources */,
 				41B4D2951BF0CD2C00A0BD62 /* navBarImage.png in Resources */,
 				41B4D29B1BF0E16700A0BD62 /* defaultHead.png in Resources */,
+				411607D01BF7862A00AD7F94 /* menuBg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +506,7 @@
 				41C1F3781BF24B89003BED87 /* DBBusinessManager.m in Sources */,
 				41B4D2691BF07CC200A0BD62 /* BaseViewController.m in Sources */,
 				41DEB7E91BF2F957000F4D56 /* BasicInfoModel.m in Sources */,
+				411607C81BF635C500AD7F94 /* MenuView.m in Sources */,
 				41C1F3751BF1B483003BED87 /* DBManager.m in Sources */,
 				41DEB7E61BF2F329000F4D56 /* HomeViewController.m in Sources */,
 				41B4D21A1BF0798700A0BD62 /* AppDelegate.m in Sources */,
@@ -487,6 +515,7 @@
 				41B4D29E1BF0F4CA00A0BD62 /* GestureManager.m in Sources */,
 				41B4D2841BF0819800A0BD62 /* FMDatabaseAdditions.m in Sources */,
 				41B4D2871BF0819800A0BD62 /* FMResultSet.m in Sources */,
+				411607CE1BF71BD300AD7F94 /* SideSlideView.m in Sources */,
 				41B4D26D1BF07FE500A0BD62 /* LoginViewController.m in Sources */,
 				41B4D2931BF0C3D200A0BD62 /* RegistView.m in Sources */,
 				41B4D2901BF0C00200A0BD62 /* RegistViewController.m in Sources */,
@@ -495,6 +524,7 @@
 				41B4D2171BF0798700A0BD62 /* main.m in Sources */,
 				41B4D28A1BF08F7700A0BD62 /* LoginView.m in Sources */,
 				41B4D2A31BF1091800A0BD62 /* ImageManager.m in Sources */,
+				411607CB1BF6476E00AD7F94 /* HomeView.m in Sources */,
 				41B4D2831BF0819800A0BD62 /* FMDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

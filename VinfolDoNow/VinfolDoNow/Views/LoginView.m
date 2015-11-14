@@ -8,6 +8,7 @@
 
 #import "LoginView.h"
 #import "GestureManager.h"
+#import "DBBusinessManager.h"
 #define userTextField_y (200*kAdaptPixel)
 #define label_y (userTextField_y + 170*kAdaptPixel)
 
@@ -48,6 +49,16 @@
         [self.passTextField resignFirstResponder];
     }
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [[DBBusinessManager sharedDBBusinessManager] updateRememberPassWithPhone:self.userTextField.text rememberPass:@"NO"];
+    [[DBBusinessManager sharedDBBusinessManager] updateAutoLoginWithPhone:self.userTextField.text autoLogin:@"NO"];
+    [self.rememberBtn setSelected:NO];
+    [self.rememberBtn setBackgroundColor:[UIColor clearColor]];
+    [self.autoLoginBtn setSelected:NO];
+    [self.autoLoginBtn setBackgroundColor:[UIColor clearColor]];
 }
 
 #pragma mark - event respond
@@ -214,6 +225,12 @@
     if (!_rememberBtn) {
         _rememberBtn = [self createBtnWithTag:1];
         [_rememberBtn addTarget:self action:@selector(rememberBtnOnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        if ([_rememberBtn isSelected]) {
+            [_rememberBtn setBackgroundColor:[UIColor greenColor]];
+        }
+        else {
+            [_rememberBtn setBackgroundColor:[UIColor clearColor]];
+        }
     }
     return _rememberBtn;
 }
@@ -223,6 +240,12 @@
     if (!_autoLoginBtn) {
         _autoLoginBtn = [self createBtnWithTag:2];
         [_autoLoginBtn addTarget:self action:@selector(autoLoginBtnOnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        if ([_autoLoginBtn isSelected]) {
+            [_autoLoginBtn setBackgroundColor:[UIColor greenColor]];
+        }
+        else {
+            [_autoLoginBtn setBackgroundColor:[UIColor clearColor]];
+        }
     }
     return _autoLoginBtn;
 }
