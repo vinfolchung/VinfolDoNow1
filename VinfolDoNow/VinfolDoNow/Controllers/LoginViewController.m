@@ -13,6 +13,8 @@
 #import "HomeViewController.h"
 #import "UserInfoModel.h"
 #import "DBBusinessManager.h"
+#import "BasicInfoModel.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController ()<LoginViewDelegate,RegistViewControllerDelegate>
 @property (nonatomic, strong) LoginView *loginView;
@@ -41,6 +43,7 @@
     [super viewDidAppear:YES];
     [self isAutoLogin];
     [self isRememberPassword];
+    self.registViewController.delegate = self;
 }
 
 #pragma mark - LoginViewDelegate
@@ -62,7 +65,15 @@
         if ([userText isEqualToString:userModel.phone]) {
             index++;
             if ([password isEqualToString:userModel.password]) {
-                [self presentViewController:self.homeViewController animated:YES completion:nil];
+                [self presentViewController:self.homeViewController animated:YES completion:^{
+                    BasicInfoModel *basicModel = [[DBBusinessManager sharedDBBusinessManager] getDataFromBasicInfoWithPhone:userModel.phone];
+                    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                    NSString *documentDirectory = [path objectAtIndex:0];
+                    NSString *headPath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@",basicModel.head]];
+                    AppDelegate *del = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+                    del.headImage = [UIImage imageWithContentsOfFile:headPath];
+                    del.phone = userModel.phone;
+                }];
                 //记录账号的登录状态
                 [[DBBusinessManager sharedDBBusinessManager] updateLoginWithPhone:userText login:@"YES"];
             }
@@ -113,7 +124,7 @@
     label.textColor = [UIColor redColor];
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:20.0*kAdaptPixel];
-    [UIView animateWithDuration:3.0 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         [label setAlpha:1.0f];
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:5.0 animations:^{
@@ -151,7 +162,15 @@
             if ([userModel.autoLogin isEqualToString:@"YES"]) {
                 NSLog(@"%@,%@",userModel.login,userModel.autoLogin);
                 //直接跳过登录
-                [self presentViewController:self.homeViewController animated:YES completion:nil];
+                [self presentViewController:self.homeViewController animated:YES completion:^{
+                    BasicInfoModel *basicModel = [[DBBusinessManager sharedDBBusinessManager] getDataFromBasicInfoWithPhone:userModel.phone];
+                    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                    NSString *documentDirectory = [path objectAtIndex:0];
+                    NSString *headPath = [documentDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@",basicModel.head]];
+                    AppDelegate *del = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+                    del.headImage = [UIImage imageWithContentsOfFile:headPath];
+                    del.phone = userModel.phone;
+                }];
                 break;
             }
         }

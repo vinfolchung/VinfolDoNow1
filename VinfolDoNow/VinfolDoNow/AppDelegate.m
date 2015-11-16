@@ -17,9 +17,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.headImage = [[UIImage alloc] init];
-    self.headImage = [UIImage imageNamed:@"avatar.png"];
-    
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
     LoginViewController *loginViewController = [[LoginViewController alloc] init];

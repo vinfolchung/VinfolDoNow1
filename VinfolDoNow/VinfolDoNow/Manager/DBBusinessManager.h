@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SingletonTemplate.h"
 #import "FMDB.h"
+@class BasicInfoModel;
 
 @interface DBBusinessManager : NSObject
 SYNTHESIZE_SINGLETON_FOR_HEADER(DBBusinessManager)
@@ -22,11 +23,12 @@ SYNTHESIZE_SINGLETON_FOR_HEADER(DBBusinessManager)
 - (void)basicInfoInsertWithPhone:(NSString *)phone
                             name:(NSString *)name
                            email:(NSString *)email
-                           birth:(NSString *)birth;
+                           birth:(NSString *)birth
+                            head:(NSString *)head;
 
 - (NSMutableArray *)getDataFromUserInfo;
 
-- (NSMutableArray *)getDataFromBasicInfo;
+- (BasicInfoModel *)getDataFromBasicInfoWithPhone:(NSString *)phone;
 
 - (void)updateLoginWithPhone:(NSString *)phone
                        login:(NSString *)login;

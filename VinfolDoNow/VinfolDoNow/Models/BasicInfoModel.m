@@ -14,12 +14,14 @@
                                   name:(NSString *)name
                                  email:(NSString *)email
                                  birth:(NSString *)birth
+                                  head:(NSString *)head
 {
     BasicInfoModel *model = [[BasicInfoModel alloc] init];
     model.phone = phone;
     model.name = name;
     model.email = email;
     model.birth = birth;
+    model.head = head;
     return model;
 }
 

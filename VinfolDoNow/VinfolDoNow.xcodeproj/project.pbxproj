@@ -47,6 +47,7 @@
 		41C1F37B1BF250FC003BED87 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C1F37A1BF250FC003BED87 /* UserInfoModel.m */; };
 		41DEB7E61BF2F329000F4D56 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41DEB7E51BF2F329000F4D56 /* HomeViewController.m */; };
 		41DEB7E91BF2F957000F4D56 /* BasicInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41DEB7E81BF2F957000F4D56 /* BasicInfoModel.m */; };
+		41EDC4D01BF8B83200FAB01A /* UserDefaultUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 41EDC4CF1BF8B83200FAB01A /* UserDefaultUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,8 @@
 		41DEB7E51BF2F329000F4D56 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		41DEB7E71BF2F957000F4D56 /* BasicInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicInfoModel.h; sourceTree = "<group>"; };
 		41DEB7E81BF2F957000F4D56 /* BasicInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInfoModel.m; sourceTree = "<group>"; };
+		41EDC4CE1BF8B83200FAB01A /* UserDefaultUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultUtil.h; sourceTree = "<group>"; };
+		41EDC4CF1BF8B83200FAB01A /* UserDefaultUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +306,8 @@
 			isa = PBXGroup;
 			children = (
 				41B4D2751BF0816B00A0BD62 /* SingletonTemplate.h */,
+				41EDC4CE1BF8B83200FAB01A /* UserDefaultUtil.h */,
+				41EDC4CF1BF8B83200FAB01A /* UserDefaultUtil.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -521,6 +526,7 @@
 				41B4D2901BF0C00200A0BD62 /* RegistViewController.m in Sources */,
 				41B4D2851BF0819800A0BD62 /* FMDatabasePool.m in Sources */,
 				41B4D2861BF0819800A0BD62 /* FMDatabaseQueue.m in Sources */,
+				41EDC4D01BF8B83200FAB01A /* UserDefaultUtil.m in Sources */,
 				41B4D2171BF0798700A0BD62 /* main.m in Sources */,
 				41B4D28A1BF08F7700A0BD62 /* LoginView.m in Sources */,
 				41B4D2A31BF1091800A0BD62 /* ImageManager.m in Sources */,

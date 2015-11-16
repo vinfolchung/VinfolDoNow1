@@ -61,7 +61,7 @@
         self.frame = CGRectMake(sideView_x, 0, self.width, self.height);
         if (!_isOpen) {
             self.blurImageView.image = image;
-            self.blurImageView.image = [self blurryImage:self.blurImageView.image withBlurLevel:0.2];
+            self.blurImageView.image = [self blurryImage:self.blurImageView.image withBlurLevel:0.6];
         }
     } completion:^(BOOL finished) {
         _isOpen = isShown;
@@ -73,10 +73,11 @@
     }];
     //要根据侧滑view是否打开来确定rootview是否可以点击
     if (!self.isOpen) {
-        [self.rootViewController.view addGestureRecognizer:self.tapGesture];
+        //[self addGestureRecognizer:self.tapGesture];
+        
     }
     else {
-        [self.rootViewController.view removeGestureRecognizer:self.tapGesture];
+        //[self.rootViewController.view removeGestureRecognizer:self.tapGesture];
     }
 }
 
@@ -89,6 +90,7 @@
 - (void)showSideSlideView
 {
     [self showSideSlideView:YES];
+    [self.blurImageView addGestureRecognizer:self.tapGesture];
     [self.menuBtn setAlpha: 0];
 }
 
@@ -100,6 +102,7 @@
 - (void)menuBtnOnClick
 {
     [self showSideSlideView:!self.isOpen];
+    [self.blurImageView addGestureRecognizer:self.tapGesture];
     [self.menuBtn setAlpha:0];
 }
 
@@ -184,7 +187,7 @@
 {
     if (!_blurImageView) {
         _blurImageView = [[UIImageView alloc] initWithFrame:CGRectMake(sideView_width, 0, kScreen_Width, kScreen_Height)];
-        _blurImageView.userInteractionEnabled = NO;
+        //_blurImageView.userInteractionEnabled = NO;
         _blurImageView.alpha = 0;
         _blurImageView.backgroundColor = [UIColor grayColor];
     }

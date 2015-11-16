@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UIImage *headImage;//全局头像
+@property (strong, nonatomic) NSString *phone;//全局账号   
 
 @end
 

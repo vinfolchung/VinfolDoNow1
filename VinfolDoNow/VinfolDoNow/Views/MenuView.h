@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MenuViewDelegate;
 @interface MenuView : UIView
+
+@property (nonatomic, weak) id<MenuViewDelegate> delegate;
+
+@end
+
+@protocol MenuViewDelegate <NSObject>
+
+- (void)settingCellOnClicked;
 
 @end

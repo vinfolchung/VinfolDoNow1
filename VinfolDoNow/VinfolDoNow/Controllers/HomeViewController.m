@@ -26,6 +26,12 @@
     [super viewDidLoad];
     [self.sideSlideView setSideViewWithContentView:self.menuView];
     [self.view addSubview:self.sideSlideView];
+    [self.view addSubview:self.homeView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
 }
 
 #pragma mark - getter and setter
@@ -33,6 +39,7 @@
 {
     if (!_homeView) {
         _homeView = [[HomeView alloc] init];
+        _homeView.backgroundColor = [UIColor clearColor];
     }
     return _homeView;
 }

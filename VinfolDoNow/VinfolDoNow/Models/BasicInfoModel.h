@@ -10,14 +10,16 @@
 
 @interface BasicInfoModel : NSObject
 
-@property (nonatomic, strong) NSString *phone;
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *email;
-@property (nonatomic, strong) NSString *birth;
+@property (nonatomic, copy) NSString *phone;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *email;
+@property (nonatomic, copy) NSString *birth;
+@property (nonatomic, copy) NSString *head;
 
 + (BasicInfoModel *)makeModelWithPhone:(NSString *)phone
                                   name:(NSString *)name
                                  email:(NSString *)email
-                                 birth:(NSString *)birth;
+                                 birth:(NSString *)birth
+                                  head:(NSString *)head;
 
 @end

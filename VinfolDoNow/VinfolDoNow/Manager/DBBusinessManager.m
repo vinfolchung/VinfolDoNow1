@@ -9,6 +9,7 @@
 #import "DBBusinessManager.h"
 #import "DBManager.h"
 #import "UserInfoModel.h"
+#import "BasicInfoModel.h"
 
 @implementation DBBusinessManager
 SYNTHESIZE_SINGLETON_FOR_CLASS(DBBusinessManager)
@@ -31,8 +32,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DBBusinessManager)
                             name:(NSString *)name
                            email:(NSString *)email
                            birth:(NSString *)birth
+                            head:(NSString *)head
 {
-    NSString *sql = [NSString stringWithFormat:@"INSERT INTO BASIC_INFO (PHONE, NAME, EMAIL, BIRTH) VALUES ('%@', '%@', '%@', '%@')",phone,name,email,birth];
+    NSString *sql = [NSString stringWithFormat:@"INSERT INTO BASIC_INFO (PHONE, NAME, EMAIL, BIRTH, HEAD) VALUES ('%@', '%@', '%@', '%@', '%@')",phone,name,email,birth,head];
     if ([[DBManager sharedDBManager] dataBaseUpdateWithSql:sql]) {
         NSLog(@"插入basicinfo表成功！");
     }
@@ -58,11 +60,22 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DBBusinessManager)
     return userArr;
 }
 
-- (NSMutableArray *)getDataFromBasicInfo
+- (BasicInfoModel *)getDataFromBasicInfoWithPhone:(NSString *)phone
 {
-    NSMutableArray *basicArr = [[NSMutableArray alloc] init];
+    BasicInfoModel *basicModel = [[BasicInfoModel alloc] init];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM BASIC_INFO WHERE PHONE = '%@'",phone];
+    FMResultSet *set = [[DBManager sharedDBManager] dataBaseQueryWithSql:sql];
+    while ([set next]) {
+        NSString *phone = [set stringForColumn:@"PHONE"];
+        NSString *name = [set stringForColumn:@"NAME"];
+        NSString *email = [set stringForColumn:@"EMAIL"];
+        NSString *birth = [set stringForColumn:@"BIRTH"];
+        NSString *head = [set stringForColumn:@"HEAD"];
+        basicModel = [BasicInfoModel makeModelWithPhone:phone name:name email:email birth:birth head:head];
+        NSLog(@"%@,%@,%@,%@,%@",phone,name,email,birth,head);
+    }
     [[DBManager sharedDBManager].dataBase close];
-    return basicArr;
+    return basicModel;
 }
 
 #pragma mark - update methods
